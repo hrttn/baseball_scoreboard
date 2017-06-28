@@ -11,19 +11,20 @@
 </head>
 
 <body>
-	<div class="container">
+	<div class="container-fluid">
 
 		<section class="row">
 			<section class="col-12">
 				<h1>Baseball Scoreboard Calculator</h1>
 				<p>Baseball is a card game in 9 rounds, the person with the lowest score at the end wins. Enter the names and score of each player below.</p>
+				<button type="button" class="btn btn-primary" id="add-player">Add a player</button>
 				<table class="table table-striped table-hover table-bordered table-responsive" id="scoreboard">
 				  <thead class="thead-inverse">
 				    <tr>
 				      <th>#</th>
-				      <th><input type="text" name="name-player1" value="Player 1" placeholder="Player 1's name" /></th>
-				      <th><input type="text" name="name-player2" value="Player 2" placeholder="Player 2's name" /></th>
-				      <th><input type="text" name="name-player3" value="Player 3" placeholder="Player 3's name" /></th>
+				      <th><input type="text" name="name-player1" class="name-player" value="Player 1" placeholder="Player 1's name" /></th>
+				      <th><input type="text" name="name-player2" class="name-player" value="Player 2" placeholder="Player 2's name" /></th>
+				      <th><input type="text" name="name-player3" class="name-player" value="Player 3" placeholder="Player 3's name" /></th>
 				    </tr>
 				  </thead>
 				  <tfoot>
