@@ -18,13 +18,14 @@
 				<h1>Baseball Scoreboard Calculator</h1>
 				<p>Baseball is a card game in 9 rounds, the person with the lowest score at the end wins. Enter the names and score of each player below.</p>
 				<button type="button" class="btn btn-primary" id="add-player">Add a player</button>
+				<button type="button" class="btn btn-error" id="add-player">Reset Table</button>
 				<table class="table table-striped table-hover table-bordered table-responsive" id="scoreboard">
 				  <thead class="thead-inverse">
 				    <tr>
 				      <th>#</th>
-				      <th><input type="text" name="name-player1" class="name-player" value="Player 1" placeholder="Player 1's name" /></th>
-				      <th><input type="text" name="name-player2" class="name-player" value="Player 2" placeholder="Player 2's name" /></th>
-				      <th><input type="text" name="name-player3" class="name-player" value="Player 3" placeholder="Player 3's name" /></th>
+				      <th><input size="6" type="text" name="name-player1" class="name-player" value="Player 1" placeholder="Player 1's name" /><button type="button" class="btn btn-danger delete-player" disabled>❌</button></th>
+				      <th><input  size="6" type="text" name="name-player2" class="name-player" value="Player 2" placeholder="Player 2's name" /><button type="button" class="btn btn-danger delete-player" disabled>❌</button></th>
+				      <th><input size="6"  type="text" name="name-player3" class="name-player" value="Player 3" placeholder="Player 3's name" /><button type="button" class="btn btn-danger delete-player" disabled>❌</button></th>
 				    </tr>
 				  </thead>
 				  <tfoot>
