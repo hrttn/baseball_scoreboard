@@ -32,8 +32,9 @@
       }
     });
     return $('#scoreboard').on('click', '.delete-player', function() {
-      var playerNumber, playerNumberClass;
-      playerNumber = $(this).parent().index();
+      var parentClass, playerNumber, playerNumberClass;
+      parentClass = $(this).parent().attr('class');
+      playerNumber = parentClass.slice(-1, parentClass.length);
       playerNumberClass = ".player" + playerNumber;
       return $(playerNumberClass).remove();
     });

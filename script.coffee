@@ -30,6 +30,8 @@ jQuery ->
 			console.log "Maximum number of players reached."
 	
 	$('#scoreboard').on 'click', '.delete-player', ->
-		playerNumber = $(this).parent().index()
+		parentClass = $(this).parent().attr('class')
+		playerNumber = parentClass.slice -1, parentClass.length
+		
 		playerNumberClass = ".player" + playerNumber
 		$(playerNumberClass).remove()
