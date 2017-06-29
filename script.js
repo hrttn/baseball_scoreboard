@@ -3,6 +3,7 @@
   var indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
   jQuery(function() {
+    var getNumberOfPlayers, getPlayersNumber;
     $('#scoreboard').on('change', '.score-player', function() {
       var i, playerNumber, round, roundName, score, scoreRound;
       playerNumber = this.name.slice(-1);
@@ -18,14 +19,8 @@
       return $('#total-player' + playerNumber).text(score);
     });
     $('#add-player').click(function() {
-      var i, j, newPlayerNumber, playersNumber, roundNumber;
-      roundNumber = 1;
-      playersNumber = [];
-      $('#scoreboard thead .name-player').each(function() {
-        return playersNumber.push(Number($(this).parent().attr('class').slice(-1)));
-      });
-      playersNumber.sort;
-      console.log(playersNumber);
+      var i, j, newPlayerNumber, numberOfPlayers, playersNumber, roundNumber;
+      playersNumber = getPlayersNumber();
       assigningNewPlayerNumber: //;
       for (j = i = 1; i <= 8; j = ++i) {
         if (indexOf.call(playersNumber, j) < 0) {
@@ -33,24 +28,51 @@
           break assigningNewPlayerNumber;
         }
       }
-      if (newPlayerNumber < 9) {
+      numberOfPlayers = getNumberOfPlayers();
+      if (numberOfPlayers < 8) {
         $('#scoreboard thead tr').append('<th class="player' + newPlayerNumber + '"><input size="6" type="text" name="name-player' + newPlayerNumber + '" class="name-player" value="Player ' + newPlayerNumber + '" placeholder="Player ' + newPlayerNumber + '\'s name" /><button type="button" class="btn btn-danger delete-player">❌</button></th>');
         $('#scoreboard tfoot tr').append('<td id="total-player' + newPlayerNumber + '" class="player' + newPlayerNumber + '">0</td>');
-        return $('#scoreboard tbody tr').each(function() {
+        roundNumber = 1;
+        $('#scoreboard tbody tr').each(function() {
           $(this).append('<td class="player' + newPlayerNumber + '"><input type="number" name="score' + roundNumber + '-player' + newPlayerNumber + '"  class="score-player"  min="0" max="42"/></td>');
           return roundNumber++;
         });
+        console.log("Player #" + newPlayerNumber + " succesfully created.");
+        if (numberOfPlayers > 2) {
+          return $('.delete-player').prop("disabled", false);
+        } else {
+          return $('.delete-player').prop("disabled", true);
+        }
       } else {
         return console.log("Maximum number of players reached.");
       }
     });
-    return $('#scoreboard').on('click', '.delete-player', function() {
-      var parentClass, playerNumber, playerNumberClass;
+    $('#scoreboard').on('click', '.delete-player', function() {
+      var numberOfPlayers, parentClass, playerNumber, playerNumberClass;
       parentClass = $(this).parent().attr('class');
       playerNumber = parentClass.slice(-1, parentClass.length);
       playerNumberClass = ".player" + playerNumber;
-      return $(playerNumberClass).remove();
+      $(playerNumberClass).remove();
+      numberOfPlayers = getNumberOfPlayers();
+      if (numberOfPlayers > 3) {
+        return $('.delete-player').prop("disabled", false);
+      } else {
+        return $('.delete-player').prop("disabled", true);
+      }
     });
+    getNumberOfPlayers = function() {
+      var playersNumber;
+      playersNumber = getPlayersNumber();
+      return playersNumber.length;
+    };
+    return getPlayersNumber = function() {
+      var playersNumber;
+      playersNumber = [];
+      $('#scoreboard thead .name-player').each(function() {
+        return playersNumber.push(Number($(this).parent().attr('class').slice(-1)));
+      });
+      return playersNumber.sort();
+    };
   });
 
 }).call(this);

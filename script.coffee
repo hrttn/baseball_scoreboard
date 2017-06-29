@@ -14,30 +14,34 @@ jQuery ->
 		$('#total-player' + playerNumber).text(score);
 
 	$('#add-player').click ->
-		roundNumber = 1
-		playersNumber = []
+
+		playersNumber = do getPlayersNumber
 		
-		$('#scoreboard thead .name-player').each ->
-			playersNumber.push Number $(this).parent().attr('class').slice -1
-
-		playersNumber.sort
-		console.log playersNumber
-
 		`assigningNewPlayerNumber: //` # CoffeeScript does not support labels for loop so this is pure js
 		for j in [1..8]
 			if j not in playersNumber
 				newPlayerNumber = j
 				`break assigningNewPlayerNumber`
 
-		
-		if newPlayerNumber < 9
+		numberOfPlayers = do getNumberOfPlayers
+
+		if numberOfPlayers < 8 # We check that we are below the maximum number of players
+
 			$('#scoreboard thead tr').append('<th class="player' + newPlayerNumber + '"><input size="6" type="text" name="name-player' + newPlayerNumber + '" class="name-player" value="Player ' + newPlayerNumber + '" placeholder="Player ' + newPlayerNumber + '\'s name" /><button type="button" class="btn btn-danger delete-player">❌</button></th>')
 
 			$('#scoreboard tfoot tr').append('<td id="total-player'+ newPlayerNumber + '" class="player' + newPlayerNumber + '">0</td>')
 
+			roundNumber = 1
 			$('#scoreboard tbody tr').each ->
 				$(this).append('<td class="player' + newPlayerNumber + '"><input type="number" name="score' + roundNumber + '-player' + newPlayerNumber + '"  class="score-player"  min="0" max="42"/></td>')
 				roundNumber++
+
+			console.log "Player #" + newPlayerNumber + " succesfully created."
+			
+			if numberOfPlayers > 2 # We check that we are above the minimum number of players
+				$('.delete-player').prop("disabled", false);
+			else
+				$('.delete-player').prop("disabled", true);
 		else
 			console.log "Maximum number of players reached."
 	
@@ -47,3 +51,22 @@ jQuery ->
 		
 		playerNumberClass = ".player" + playerNumber
 		$(playerNumberClass).remove()
+
+		numberOfPlayers = do getNumberOfPlayers
+
+		if numberOfPlayers > 3 # We check that we are above the minimum number of players
+				$('.delete-player').prop("disabled", false);
+			else
+				$('.delete-player').prop("disabled", true);
+
+	getNumberOfPlayers = ->
+		playersNumber = do getPlayersNumber		
+		playersNumber.length
+
+	getPlayersNumber = ->
+
+		playersNumber = []
+		$('#scoreboard thead .name-player').each ->
+			playersNumber.push Number $(this).parent().attr('class').slice -1
+		
+		playersNumber.sort()
