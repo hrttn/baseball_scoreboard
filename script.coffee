@@ -15,8 +15,20 @@ jQuery ->
 
 	$('#add-player').click ->
 		roundNumber = 1
-		numberOfPlayers = $('#scoreboard thead .name-player').length #Get the numbers of players based on the table
-		newPlayerNumber = numberOfPlayers + 1
+		playersNumber = []
+		
+		$('#scoreboard thead .name-player').each ->
+			playersNumber.push Number $(this).parent().attr('class').slice -1
+
+		playersNumber.sort
+		console.log playersNumber
+
+		`assigningNewPlayerNumber: //` # CoffeeScript does not support labels for loop so this is pure js
+		for j in [1..8]
+			if j not in playersNumber
+				newPlayerNumber = j
+				`break assigningNewPlayerNumber`
+
 		
 		if newPlayerNumber < 9
 			$('#scoreboard thead tr').append('<th class="player' + newPlayerNumber + '"><input size="6" type="text" name="name-player' + newPlayerNumber + '" class="name-player" value="Player ' + newPlayerNumber + '" placeholder="Player ' + newPlayerNumber + '\'s name" /><button type="button" class="btn btn-danger delete-player">❌</button></th>')
