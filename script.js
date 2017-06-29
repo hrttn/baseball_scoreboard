@@ -31,7 +31,7 @@
       numberOfPlayers = getNumberOfPlayers();
       if (numberOfPlayers < 8) {
         $('#scoreboard thead tr').append('<th class="player' + newPlayerNumber + '"><input size="6" type="text" name="name-player' + newPlayerNumber + '" class="name-player" value="Player ' + newPlayerNumber + '" placeholder="Player ' + newPlayerNumber + '\'s name" /><button type="button" class="btn btn-danger delete-player">❌</button></th>');
-        $('#scoreboard tfoot tr').append('<td id="total-player' + newPlayerNumber + '" class="player' + newPlayerNumber + '">0</td>');
+        $('#scoreboard tfoot tr').append('<td class="total-player" id="total-player' + newPlayerNumber + '" class="player' + newPlayerNumber + '">0</td>');
         roundNumber = 1;
         $('#scoreboard tbody tr').each(function() {
           $(this).append('<td class="player' + newPlayerNumber + '"><input type="number" name="score' + roundNumber + '-player' + newPlayerNumber + '"  class="score-player"  min="0" max="42"/></td>');
@@ -59,6 +59,10 @@
       } else {
         return $('.delete-player').prop("disabled", true);
       }
+    });
+    $('#new-game').click(function() {
+      $('.score-player').val('');
+      return $('.total-player').text('0');
     });
     getNumberOfPlayers = function() {
       var playersNumber;
