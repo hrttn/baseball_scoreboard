@@ -93,11 +93,13 @@
   };
 
   highlightBestScore = function() {
-    var bestPlayers, i, k, ref, ref1, ref2, results, totalCell;
+    var bestPlayers, i, k, len, ref, ref1, ref2, results, totalCell;
     bestPlayers = getBestPlayers();
     console.log(bestPlayers);
+    ref = getPlayersNumber();
     results = [];
-    for (i = k = 1, ref = getNumberOfPlayers(); 1 <= ref ? k <= ref : k >= ref; i = 1 <= ref ? ++k : --k) {
+    for (k = 0, len = ref.length; k < len; k++) {
+      i = ref[k];
       totalCell = $('#total-player' + i);
       if ((totalCell.hasClass('bg-success text-white font-weight-bold')) && (ref1 = totalCell.attr('id'), indexOf.call(bestPlayers, ref1) < 0)) {
         results.push(totalCell.removeClass('bg-success text-white font-weight-bold'));

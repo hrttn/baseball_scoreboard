@@ -98,7 +98,7 @@ highlightBestScore = ->
 	bestPlayers = do getBestPlayers
 
 	console.log bestPlayers
-	for i in [1..do getNumberOfPlayers]
+	for i in getPlayersNumber()
 		totalCell = $('#total-player' + i)
 		
 		if((totalCell.hasClass('bg-success text-white font-weight-bold')) && (totalCell.attr('id') not in bestPlayers))
