@@ -69,13 +69,7 @@ jQuery ->
 		$('.total-player').text('0')
 		do highlightBestScore
 
-getTotals = ->
-	playersTotal = {}
-	$('#scoreboard tfoot .total-player').each ->
-		playersTotal[$(this).attr('id')] = Number $(this).text()
 
-	console.log playersTotal
-	playersTotal
 
 getBestPlayers =->
 	totals = do getTotals
@@ -94,17 +88,7 @@ getBestPlayers =->
 	
 	bestPlayers
 
-highlightBestScore = ->
-	bestPlayers = do getBestPlayers
 
-	console.log bestPlayers
-	for i in getPlayersNumber()
-		totalCell = $('#total-player' + i)
-		
-		if((totalCell.hasClass('bg-success text-white font-weight-bold')) && (totalCell.attr('id') not in bestPlayers))
-			totalCell.removeClass('bg-success text-white font-weight-bold')
-		else if ((!totalCell.hasClass('bg-success text-white font-weight-bold')) && (totalCell.attr('id') in bestPlayers))
-			totalCell.addClass('bg-success text-white font-weight-bold')
 
 getNumberOfPlayers = ->
 	playersNumber = do getPlayersNumber		
@@ -117,6 +101,26 @@ getPlayersNumber = ->
 		playersNumber.push Number $(this).parent().attr('class').slice -1
 	
 	playersNumber.sort()
+	
+getTotals = ->
+	playersTotal = {}
+	$('#scoreboard tfoot .total-player').each ->
+		playersTotal[$(this).attr('id')] = Number $(this).text()
+
+	console.log playersTotal
+	playersTotal
+
+highlightBestScore = ->
+	bestPlayers = do getBestPlayers
+
+	console.log bestPlayers
+	for i in getPlayersNumber()
+		totalCell = $('#total-player' + i)
+		
+		if((totalCell.hasClass('bg-success text-white font-weight-bold')) && (totalCell.attr('id') not in bestPlayers))
+			totalCell.removeClass('bg-success text-white font-weight-bold')
+		else if ((!totalCell.hasClass('bg-success text-white font-weight-bold')) && (totalCell.attr('id') in bestPlayers))
+			totalCell.addClass('bg-success text-white font-weight-bold')
 
 toggleButtons = ->
 	numberOfPlayers = do getNumberOfPlayers
