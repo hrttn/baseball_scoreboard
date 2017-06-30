@@ -8,6 +8,7 @@
   <title>Baseball Scoreboard Calculator - A simple project with CoffeeScript</title>
   <meta name="description" content="This is a simple scoreboard calculator for the card game Baseball.">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link rel="stylesheet" href="./style.css">
 </head>
 
@@ -27,9 +28,9 @@
 				  <thead class="thead-inverse">
 				    <tr>
 				      <th>#</th>
-				      <th class="player1"><input size="6" type="text" name="name-player1" class="name-player" value="Player 1" placeholder="Player 1's name" /><button type="button" class="btn btn-danger delete-player" disabled>❌</button></th>
-				      <th class="player2"><input  size="6" type="text" name="name-player2" class="name-player" value="Player 2" placeholder="Player 2's name" /><button type="button" class="btn btn-danger delete-player" disabled>❌</button></th>
-				      <th class="player3"><input size="6"  type="text" name="name-player3" class="name-player" value="Player 3" placeholder="Player 3's name" /><button type="button" class="btn btn-danger delete-player" disabled>❌</button></th>
+				      <th class="player1"><input size="6" type="text" name="name-player1" class="name-player" value="Player 1" placeholder="Player 1's name" /><button type="button" aria-label="Delete" class=" btn btn-danger delete-player" disabled><span aria-hidden="true"><i class="fa fa-trash" aria-hidden="true"></i></span></button></th>
+				      <th class="player2"><input  size="6" type="text" name="name-player2" class="name-player" value="Player 2" placeholder="Player 2's name" /><button type="button" aria-label="Delete" class=" btn btn-danger delete-player" disabled><span aria-hidden="true"><i class="fa fa-trash" aria-hidden="true"></i></span></button></th>
+				      <th class="player3"><input size="6"  type="text" name="name-player3" class="name-player" value="Player 3" placeholder="Player 3's name" /><button type="button" aria-label="Delete" class=" btn btn-danger delete-player" disabled><span aria-hidden="true"><i class="fa fa-trash" aria-hidden="true"></i></span></button></th>
 				    </tr>
 				  </thead>
 				  <tfoot>

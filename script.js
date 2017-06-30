@@ -32,7 +32,7 @@
       }
       numberOfPlayers = getNumberOfPlayers();
       if (numberOfPlayers < 8) {
-        $('#scoreboard thead tr').append('<th class="player' + newPlayerNumber + '"><input size="6" type="text" name="name-player' + newPlayerNumber + '" class="name-player" value="Player ' + newPlayerNumber + '" placeholder="Player ' + newPlayerNumber + '\'s name" /><button type="button" class="btn btn-danger delete-player">❌</button></th>');
+        $('#scoreboard thead tr').append('<th class="player' + newPlayerNumber + '"><input size="6" type="text" name="name-player' + newPlayerNumber + '" class="name-player" value="Player ' + newPlayerNumber + '" placeholder="Player ' + newPlayerNumber + '\'s name" /><button type="button" aria-label="Delete" class="btn btn-danger delete-player"><span aria-hidden="true"><i class="fa fa-trash" aria-hidden="true"></i></span></button></th>');
         $('#scoreboard tfoot tr').append('<td class="total-player player' + newPlayerNumber + '" id="total-player' + newPlayerNumber + '">0</td>');
         roundNumber = 1;
         $('#scoreboard tbody tr').each(function() {
@@ -63,16 +63,6 @@
     });
   });
 
-  getTotals = function() {
-    var playersTotal;
-    playersTotal = {};
-    $('#scoreboard tfoot .total-player').each(function() {
-      return playersTotal[$(this).attr('id')] = Number($(this).text());
-    });
-    console.log(playersTotal);
-    return playersTotal;
-  };
-
   getBestPlayers = function() {
     var bestPlayers, min, player, total, totals;
     totals = getTotals();
@@ -90,6 +80,31 @@
       }
     }
     return bestPlayers;
+  };
+
+  getNumberOfPlayers = function() {
+    var playersNumber;
+    playersNumber = getPlayersNumber();
+    return playersNumber.length;
+  };
+
+  getPlayersNumber = function() {
+    var playersNumber;
+    playersNumber = [];
+    $('#scoreboard thead .name-player').each(function() {
+      return playersNumber.push(Number($(this).parent().attr('class').slice(-1)));
+    });
+    return playersNumber.sort();
+  };
+
+  getTotals = function() {
+    var playersTotal;
+    playersTotal = {};
+    $('#scoreboard tfoot .total-player').each(function() {
+      return playersTotal[$(this).attr('id')] = Number($(this).text());
+    });
+    console.log(playersTotal);
+    return playersTotal;
   };
 
   highlightBestScore = function() {
@@ -110,21 +125,6 @@
       }
     }
     return results;
-  };
-
-  getNumberOfPlayers = function() {
-    var playersNumber;
-    playersNumber = getPlayersNumber();
-    return playersNumber.length;
-  };
-
-  getPlayersNumber = function() {
-    var playersNumber;
-    playersNumber = [];
-    $('#scoreboard thead .name-player').each(function() {
-      return playersNumber.push(Number($(this).parent().attr('class').slice(-1)));
-    });
-    return playersNumber.sort();
   };
 
   toggleButtons = function() {

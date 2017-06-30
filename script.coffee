@@ -34,7 +34,7 @@ jQuery ->
 
 		if numberOfPlayers < 8 # We check that we are below the maximum number of players
 
-			$('#scoreboard thead tr').append('<th class="player' + newPlayerNumber + '"><input size="6" type="text" name="name-player' + newPlayerNumber + '" class="name-player" value="Player ' + newPlayerNumber + '" placeholder="Player ' + newPlayerNumber + '\'s name" /><button type="button" class="btn btn-danger delete-player">❌</button></th>')
+			$('#scoreboard thead tr').append('<th class="player' + newPlayerNumber + '"><input size="6" type="text" name="name-player' + newPlayerNumber + '" class="name-player" value="Player ' + newPlayerNumber + '" placeholder="Player ' + newPlayerNumber + '\'s name" /><button type="button" aria-label="Delete" class="btn btn-danger delete-player"><span aria-hidden="true"><i class="fa fa-trash" aria-hidden="true"></i></span></button></th>')
 			$('#scoreboard tfoot tr').append('<td class="total-player player' + newPlayerNumber + '" id="total-player'+ newPlayerNumber + '">0</td>')
 
 			roundNumber = 1
@@ -101,7 +101,7 @@ getPlayersNumber = ->
 		playersNumber.push Number $(this).parent().attr('class').slice -1
 	
 	playersNumber.sort()
-	
+
 getTotals = ->
 	playersTotal = {}
 	$('#scoreboard tfoot .total-player').each ->
