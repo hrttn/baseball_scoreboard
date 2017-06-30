@@ -1,6 +1,5 @@
 input {
 	border: 0;
-	box-shadow: none;
 	border-radius: 0;
 	background: transparent;
 	border-bottom: 1px solid #757575;
@@ -15,7 +14,7 @@ button {
 	padding: 0px 4px;
 	position: relative;
 	top: 5px;
-
+	margin-left: 15px;
 }
 
 .score-player {
