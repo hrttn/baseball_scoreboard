@@ -8,6 +8,7 @@
   <title>Baseball Scoreboard Calculator - A simple project with CoffeeScript</title>
   <meta name="description" content="This is a simple scoreboard calculator for the card game Baseball.">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
@@ -16,9 +17,12 @@
 		<section class="row">
 			<section class="col-12">
 				<h1>Baseball Scoreboard Calculator</h1>
-				<p>Baseball is a card game in 9 rounds, the person with the lowest score at the end wins. Enter the names and score of each player below.</p>
-				<button type="button" class="btn btn-primary" id="add-player">Add a player</button>
-				<button type="button" class="btn btn-error" id="new-game">New game</button>
+				<section>
+					<p>Baseball is a card game in 9 rounds, the person with the lowest score at the end wins. Enter the names and score of each player below.</p>
+					
+					<p><button type="button" class="btn btn-primary btn-lg" id="add-player">Add a player</button>
+					<button type="button" class="btn btn-info btn-lg" id="new-game">New game</button></p>
+				</section>
 				<table class="table table-striped table-hover table-bordered table-responsive" id="scoreboard">
 				  <thead class="thead-inverse">
 				    <tr>

@@ -1,0 +1,32 @@
+input {
+	border: 0;
+	box-shadow: none;
+	border-radius: 0;
+	background: transparent;
+	border-bottom: 1px solid #757575;
+}
+
+button {
+	cursor: pointer;
+}
+
+.delete-player {
+	float: right;
+	padding: 0px 4px;
+	position: relative;
+	top: 5px;
+
+}
+
+.score-player {
+	width: 75px;
+	float:right;
+}
+
+.total-player{
+	text-align: right;
+}
+
+.thead-inverse input {
+    color: white;
+}
